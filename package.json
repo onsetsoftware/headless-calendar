@@ -1,0 +1,34 @@
+{
+  "name": "@onsetsoftware/headless-calendar",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --declaration && vite build",
+    "preview": "vite preview",
+    "test": "vitest --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/node": "^18.0.6",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0",
+    "vite-plugin-dts": "^1.4.0",
+    "vitest": "^0.18.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/headless-calendar.umd.js",
+  "module": "./dist/headless-calendar.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/headless-calendar.es.js",
+      "require": "./dist/headless-calendar.umd.js"
+    }
+  },
+  "types": "./dist/types/index.d.ts"
+}
