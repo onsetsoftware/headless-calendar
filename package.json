@@ -5,15 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --declaration && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest --watch"
   },
   "dependencies": {},
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.3",
-    "@types/node": "^18.0.6",
-    "tslib": "^2.4.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
     "vite-plugin-dts": "^1.4.0",
