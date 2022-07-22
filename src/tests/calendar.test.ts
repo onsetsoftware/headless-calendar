@@ -1,7 +1,26 @@
 import { describe, expect, test } from "vitest";
 import { CalendarOfMonth } from "../CalendarOfMonth";
+import { Calendar } from "../Calendar";
 
 describe("Calendar Tests", () => {
+  test("calendars must be in date order", () => {
+    const calendar = new Calendar("2022-07-21", "2022-07-23");
+    expect(calendar.startDate.isBefore(calendar.endDate)).toBe(true);
+
+    const calendar2 = new Calendar("2022-07-23", "2022-07-21");
+    expect(calendar2.startDate.isBefore(calendar.endDate)).toBe(true);
+  });
+
+  test("calendars have the correct length", () => {
+    const calendar = new Calendar("2022-07-21", "2022-07-23");
+    expect(calendar.length).toBe(3);
+    expect(calendar.days.length).toBe(3);
+
+    const calendar2 = new Calendar("2022-07-21", "2022-07-21");
+    expect(calendar2.length).toBe(1);
+    expect(calendar2.days.length).toBe(1);
+  });
+
   test("Month Calendar String shows correctly", () => {
     const calendar = new CalendarOfMonth(2022, 7, 0);
 

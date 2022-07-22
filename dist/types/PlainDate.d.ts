@@ -7,6 +7,8 @@ export declare class PlainDate {
     get monthName(): string;
     toJSDate(): Date;
     equals(another: PlainDate): boolean;
+    isBefore(another: PlainDate): boolean;
+    isAfter(another: PlainDate): boolean;
     diff(another: PlainDate): number;
     next(): PlainDate;
     previous(): PlainDate;

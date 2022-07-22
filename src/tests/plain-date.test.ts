@@ -34,6 +34,24 @@ describe("Plain Date Tests", () => {
     expect(plain.diff(plain)).toBe(0);
 
     const staticPlain = PlainDate.create(2022, 8, 1);
-    expect(staticPlain.diff(staticPlain.previous())).toBe(1);
+    expect(staticPlain.diff(staticPlain.previous())).toBe(-1);
+  });
+
+  test("is before works", () => {
+    const plain = new PlainDate("2022-07-21");
+    const plain2 = new PlainDate("2022-07-23");
+    expect(plain.isBefore(plain2)).toBe(true);
+    expect(plain2.isBefore(plain)).toBe(false);
+
+    expect(plain.isBefore(plain)).toBe(false);
+  });
+
+  test("is after works", () => {
+    const plain = new PlainDate("2022-07-21");
+    const plain2 = new PlainDate("2022-07-23");
+    expect(plain.isAfter(plain2)).toBe(false);
+    expect(plain2.isAfter(plain)).toBe(true);
+
+    expect(plain.isAfter(plain)).toBe(false);
   });
 });

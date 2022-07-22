@@ -1,9 +1,9 @@
 import { Day } from "./Day";
 import { PlainDate } from "./PlainDate";
 export declare class Calendar {
-    protected readonly startDate: PlainDate;
-    protected readonly endDate: PlainDate;
-    protected readonly startWeekDayIndex: number;
+    readonly startDate: PlainDate;
+    readonly endDate: PlainDate;
+    readonly startWeekDayIndex: number;
     constructor(startDateStr: string, endDateStr: string, startWeekDayIndex?: number);
     get length(): number;
     get weekDayNames(): any[];

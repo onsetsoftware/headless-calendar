@@ -9,9 +9,9 @@ import {
 } from "./utils";
 
 export class Calendar {
-  protected readonly startDate: PlainDate;
-  protected readonly endDate: PlainDate;
-  protected readonly startWeekDayIndex: number;
+  public readonly startDate: PlainDate;
+  public readonly endDate: PlainDate;
+  public readonly startWeekDayIndex: number;
 
   constructor(
     startDateStr: string,
@@ -20,11 +20,18 @@ export class Calendar {
   ) {
     this.startDate = new PlainDate(startDateStr);
     this.endDate = new PlainDate(endDateStr);
+    if (this.endDate.isBefore(this.startDate)) {
+      const tempDate = this.startDate;
+
+      this.startDate = this.endDate;
+      this.endDate = tempDate;
+    }
+
     this.startWeekDayIndex = startWeekDayIndex;
   }
 
   get length() {
-    return this.startDate.diff(this.endDate);
+    return this.startDate.diff(this.endDate) + 1;
   }
 
   get weekDayNames() {

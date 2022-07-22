@@ -32,10 +32,17 @@ export class PlainDate {
     );
   }
 
+  isBefore(another: PlainDate): boolean {
+    return this.diff(another) > 0;
+  }
+
+  isAfter(another: PlainDate): boolean {
+    return this.diff(another) < 0;
+  }
+
   diff(another: PlainDate): number {
     return (
-      Math.abs(another.toJSDate().getTime() - this.toJSDate().getTime()) /
-      86400000
+      (another.toJSDate().getTime() - this.toJSDate().getTime()) / 86400000
     );
   }
 

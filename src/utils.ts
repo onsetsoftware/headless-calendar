@@ -17,7 +17,9 @@ export function getMaxWeekAxisIndex(
 ): number {
   return (
     Math.ceil(
-      (getDayAxisIndex(startDate, swdi) + (startDate.diff(endDate) + 1)) / 7
+      (getDayAxisIndex(startDate, swdi) +
+        (Math.abs(startDate.diff(endDate)) + 1)) /
+        7
     ) - 1
   );
 }
