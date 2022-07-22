@@ -1,4 +1,4 @@
-# Headless Calendar(v0.1.0)
+# Headless Calendar
 A simple and easy to use JavaScript library that provides common calendar functionalities for making completely customizable calendar UI. Based heavily on the work done by [https://github.com/ashutoshbw/headless-calendar](https://github.com/ashutoshbw/headless-calendar)
 
 ## 💡 Features
