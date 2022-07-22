@@ -177,20 +177,6 @@ new CalendarOfYear(year, [startWeekDayIndex])
 ### Return value
 An iterable object with the same interface of a `Calendar` instance, representing the days of the specified year.
 
-## `CalendarOfLastYear`
-It generates the calendar of last year, that is the calendar of last 365 days including today(according to local time).
-
-Syntax:
-```
-new CalendarOfLastYear([startWeekDayIndex])
-```
-
-### Parameters
-* `startWeekDayIndex`(Number) *Optional*: It represents the day to start the week with. `0` means Sunday and it goes on incrementally until 6 means Saturday.
-
-### Return value
-An iterable object with the same interface of a `Calendar` instance, representing the days of last year(last 365 days including today).
-
 ## `PlainDate`
 `PlainDate` is wrapper class around the original JavaScript `Date`. It only thinks about year, month and date. No hours, minutes or others parts.
 
