@@ -229,6 +229,30 @@ somePlainDate.equals(another)
 ##### Return value
 A Boolean value indicating whether the `PlainDate` equals `another` `PlainDate`.
 
+#### `isBefore`
+Checks whether the given `PlainDate` is before the current one.
+
+Syntax:
+```javascript
+somePlainDate.isBefore(another)
+```
+##### Parameters
+* `another`(PlainDate): Another `PlainDate` value to compare to.
+##### Return value
+A Boolean value indicating whether the `PlainDate` is before `another` `PlainDate`.
+
+#### `isAfter`
+Checks whether the given `PlainDate` is after the current one.
+
+Syntax:
+```javascript
+somePlainDate.isBefore(another)
+```
+##### Parameters
+* `another`(PlainDate): Another `PlainDate` value to compare to.
+##### Return value
+A Boolean value indicating whether the `PlainDate` is after `another` `PlainDate`.
+
 #### `diff`
 Returns the difference between two `PlainDate`s.
 
