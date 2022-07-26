@@ -47,14 +47,22 @@ export class PlainDate {
   }
 
   next(): PlainDate {
-    return PlainDate.fromJSDate(
-      new Date(this.toJSDate().getTime() + 1000 * 60 * 60 * 24)
-    );
+    return this.addDays(1);
   }
 
   previous() {
+    return this.subDays(1);
+  }
+
+  addDays(days: number): PlainDate {
     return PlainDate.fromJSDate(
-      new Date(this.toJSDate().getTime() - 1000 * 60 * 60 * 24)
+      new Date(this.toJSDate().getTime() + 1000 * 60 * 60 * 24 * days)
+    );
+  }
+
+  subDays(days: number): PlainDate {
+    return PlainDate.fromJSDate(
+      new Date(this.toJSDate().getTime() - 1000 * 60 * 60 * 24 * days)
     );
   }
 

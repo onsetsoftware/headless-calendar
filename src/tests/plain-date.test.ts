@@ -18,6 +18,42 @@ describe("Plain Date Tests", () => {
     expect(staticPlain.next().toString()).toBe("2022-08-01");
   });
 
+  test("Next works when it is a leap year", () => {
+    // non-leap year
+    const plain = new PlainDate("2022-02-28");
+    expect(plain.next().toString()).toBe("2022-03-01");
+
+    // leap year
+    const plain2 = new PlainDate("2020-02-28");
+    expect(plain2.next().toString()).toBe("2020-02-29");
+  });
+
+  test("Next works when there are daylight savings changes", () => {
+    // spring forward
+    const plain = new PlainDate("2022-03-26");
+    expect(plain.next().toString()).toBe("2022-03-27");
+    expect(plain.next().next().toString()).toBe("2022-03-28");
+    expect(plain.next().next().next().toString()).toBe("2022-03-29");
+
+    // fall back
+    const plain2 = new PlainDate("2022-10-29");
+    expect(plain2.next().toString()).toBe("2022-10-30");
+    expect(plain2.next().next().toString()).toBe("2022-10-31");
+    expect(plain2.next().next().next().toString()).toBe("2022-11-01");
+  });
+
+  test("adding arbitrary number of days works", () => {
+    // spring forward
+    const plain = new PlainDate("2022-03-26");
+    expect(plain.addDays(200).toString()).toBe("2022-10-12");
+  });
+
+  test("subtracting arbitrary number of days works", () => {
+    // spring forward
+    const plain = new PlainDate("2022-03-26");
+    expect(plain.subDays(200).toString()).toBe("2021-09-07");
+  });
+
   test("Plain Date previous returns the previous date", () => {
     const plain = new PlainDate("2022-07-21");
     expect(plain.previous().toString()).toBe("2022-07-20");

@@ -280,6 +280,34 @@ None.
 ##### Return value
 The previous `PlainDate`.
 
+#### `addDays`
+Returns the day `days` after the active `PlainDate`.
+
+Syntax:
+```
+somePlainDate.addDays(days);
+```
+
+##### Parameters
+* `days`(number): The number of days to add
+
+##### Return value
+The `PlainDate` `days` after the active date.
+
+#### `subDays`
+Returns the day `days` before the active `PlainDate`.
+
+Syntax:
+```
+somePlainDate.subDays(days);
+```
+
+##### Parameters
+* `days`(number): The number of days to subtract
+
+##### Return value
+The `PlainDate` `days` before the active date.
+
 #### `toString`
 A string representation of the `PlainDate`.
 
