@@ -12,6 +12,8 @@ export declare class PlainDate {
     diff(another: PlainDate): number;
     next(): PlainDate;
     previous(): PlainDate;
+    addDays(days: number): PlainDate;
+    subDays(days: number): PlainDate;
     toString(): string;
     static fromJSDate(date: Date, UTC?: boolean): PlainDate;
     static today(UTC?: boolean): PlainDate;

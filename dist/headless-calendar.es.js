@@ -25,7 +25,7 @@ const S = [
   "Thursday",
   "Friday",
   "Saturday"
-], d = [
+], o = [
   "January",
   "February",
   "March",
@@ -57,7 +57,7 @@ class i {
     return new i([t, e, a].join("-"));
   }
   get monthName() {
-    return d[this.month - 1];
+    return o[this.month - 1];
   }
   toJSDate() {
     return new Date(Date.UTC(this.year, this.month - 1, this.date));
@@ -75,10 +75,16 @@ class i {
     return (t.toJSDate().getTime() - this.toJSDate().getTime()) / 864e5;
   }
   next() {
-    return i.fromJSDate(new Date(this.toJSDate().getTime() + 1e3 * 60 * 60 * 24));
+    return this.addDays(1);
   }
   previous() {
-    return i.fromJSDate(new Date(this.toJSDate().getTime() - 1e3 * 60 * 60 * 24));
+    return this.subDays(1);
+  }
+  addDays(t) {
+    return i.fromJSDate(new Date(this.toJSDate().getTime() + 1e3 * 60 * 60 * 24 * t));
+  }
+  subDays(t) {
+    return i.fromJSDate(new Date(this.toJSDate().getTime() - 1e3 * 60 * 60 * 24 * t));
   }
   toString() {
     return [
@@ -120,16 +126,16 @@ class D {
   }
   toString(t = !0, e = " ") {
     let a = new D(this.startDate.toString(), this.endDate.toString(), this.startWeekDayIndex), n = this.maxWeekAxisIndex, r = "";
-    r += a.weekDayNames.map((o) => o.slice(0, 2)).join(e) + `
+    r += a.weekDayNames.map((d) => d.slice(0, 2)).join(e) + `
 `;
-    for (let o of a) {
+    for (let d of a) {
       let [h, u, l, m] = [
-        o.value.date,
-        o.value.dayAxisIndex,
-        o.value.weekAxisIndex,
-        o.value.dayNumber
+        d.value.date,
+        d.value.dayAxisIndex,
+        d.value.weekAxisIndex,
+        d.value.dayNumber
       ];
-      m == 1 && u > 0 && (r += Array(u).fill("  ").join(e)), r += (u == 0 ? "" : e) + `${h.date}`.padStart(2), t && (l == 0 && u == 6 && (r += ` ${d[h.month - 1]} ${h.year}`), l > 0 && u == 6 && h.date <= 7 && (r += ` ${d[h.month - 1]}`, h.month == 0 && (r += ` ${h.year}`))), r += u === 6 && l !== n ? `
+      m == 1 && u > 0 && (r += Array(u).fill("  ").join(e)), r += (u == 0 ? "" : e) + `${h.date}`.padStart(2), t && (l == 0 && u == 6 && (r += ` ${o[h.month - 1]} ${h.year}`), l > 0 && u == 6 && h.date <= 7 && (r += ` ${o[h.month - 1]}`, h.month == 0 && (r += ` ${h.year}`))), r += u === 6 && l !== n ? `
 ` : "", h.equals(this.endDate) && u < 6 && (r += e + Array(7 - u - 1).fill("  ").join(e));
     }
     return r;
@@ -156,7 +162,7 @@ class p extends D {
     super(n, r, a);
   }
   toString(t = !0, e = " ") {
-    let a = t ? `${d[this.startDate.month - 1]} ${this.startDate.year}` : "", n = super.toString(!1, e), r = e.length * 6 + 14, c = Math.ceil((r - a.length) / 2 + a.length);
+    let a = t ? `${o[this.startDate.month - 1]} ${this.startDate.year}` : "", n = super.toString(!1, e), r = e.length * 6 + 14, c = Math.ceil((r - a.length) / 2 + a.length);
     return (t ? a.padStart(c).padEnd(r) + `
 ` : "") + n;
   }
