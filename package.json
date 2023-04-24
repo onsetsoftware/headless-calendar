@@ -1,7 +1,7 @@
 {
   "name": "@onsetsoftware/headless-calendar",
   "private": true,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,7 +23,8 @@
   "exports": {
     ".": {
       "import": "./dist/headless-calendar.es.js",
-      "require": "./dist/headless-calendar.umd.js"
+      "require": "./dist/headless-calendar.umd.js",
+      "types": "./dist/types/index.d.ts"
     }
   },
   "types": "./dist/types/index.d.ts"
