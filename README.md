@@ -45,7 +45,7 @@ Week Axis                Week Axis indices. Starts with 0 too.
 import {CalendarOfMonth} from "@onsetsoftware/headless-calendar";
 
 // generates the calendar of January of 2021
-const month = new CalendarOfMonth(2021, 1); 
+const month = new CalendarOfMonth(2021, 1);
 
 for (day of month) {
   console.log(day);
@@ -112,7 +112,7 @@ Su Mo Tu We Th Fr Sa
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
 31  1  2  3  4  5  6 February
- 7  8  9 10         
+ 7  8  9 10
 */
 ```
 
@@ -151,14 +151,14 @@ const month = new CalendarOfMonth(2021, 1);
 console.log(month.toString())
 
 /*
-    January 2021    
+    January 2021
 Su Mo Tu We Th Fr Sa
                 1  2
  3  4  5  6  7  8  9
 10 11 12 13 14 15 16
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
-31                  
+31
 */
 ```
 
@@ -182,7 +182,7 @@ An iterable object with the same interface of a `Calendar` instance, representin
 
 Syntax:
 ```
-new PlainDate(dateString)
+new PlainDate(dateString, locale?: Intl.LocalesArgument)
 ```
 ### Parameters
 * `dateString`(String) *Optional*: It should follow the format `year-month-date` format. Each part is expressed with digits. If it is omitted, it is treated as current date according to local time.

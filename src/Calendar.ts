@@ -1,4 +1,4 @@
-import { Day } from "./Day";
+import { Day, DayOfTheWeek } from "./Day";
 import { PlainDate } from "./PlainDate";
 import {
   getWeekDayNames,
@@ -11,15 +11,16 @@ import {
 export class Calendar {
   public readonly startDate: PlainDate;
   public readonly endDate: PlainDate;
-  public readonly startWeekDayIndex: number;
+  public readonly startWeekDayIndex: DayOfTheWeek;
 
   constructor(
     startDateStr: string,
     endDateStr: string,
-    startWeekDayIndex: number = 0
+    startWeekDayIndex: DayOfTheWeek = 0,
+    protected locale?: Intl.LocalesArgument,
   ) {
-    this.startDate = new PlainDate(startDateStr);
-    this.endDate = new PlainDate(endDateStr);
+    this.startDate = new PlainDate(startDateStr, this.locale);
+    this.endDate = new PlainDate(endDateStr, this.locale);
     if (this.endDate.isBefore(this.startDate)) {
       const tempDate = this.startDate;
 
@@ -35,14 +36,14 @@ export class Calendar {
   }
 
   get weekDayNames() {
-    return getWeekDayNames(this.startWeekDayIndex);
+    return getWeekDayNames(this.startWeekDayIndex, this.locale);
   }
 
   get maxWeekAxisIndex() {
     return getMaxWeekAxisIndex(
       this.startDate,
       this.endDate,
-      this.startWeekDayIndex
+      this.startWeekDayIndex,
     );
   }
 
@@ -50,15 +51,12 @@ export class Calendar {
     return [...this].map((val) => val.value);
   }
 
-  /**
-   * @param {Boolean} names - determines whether month and year names are written
-   * @param {String}  s     - separator between dates
-   */
-  toString(names = true, s = " ") {
+  toString(names: boolean = true, s: string = " ") {
     let cal = new Calendar(
       this.startDate.toString(),
       this.endDate.toString(),
-      this.startWeekDayIndex
+      this.startWeekDayIndex,
+      this.locale,
     );
     let yMax = this.maxWeekAxisIndex;
     let result = "";
@@ -81,9 +79,10 @@ export class Calendar {
       result += (x == 0 ? "" : s) + `${d.date}`.padStart(2);
 
       if (names) {
-        if (y == 0 && x == 6) result += ` ${monthNames[d.month - 1]} ${d.year}`;
+        if (y == 0 && x == 6)
+          result += ` ${monthNames(this.locale)[d.month - 1]} ${d.year}`;
         if (y > 0 && x == 6 && d.date <= 7) {
-          result += ` ${monthNames[d.month - 1]}`;
+          result += ` ${monthNames(this.locale)[d.month - 1]}`;
           if (d.month == 0) result += ` ${d.year}`;
         }
       }
@@ -105,7 +104,7 @@ export class Calendar {
   [Symbol.iterator]() {
     let startDate = this.startDate;
     let endDate = this.endDate;
-    let swdi = this.startWeekDayIndex;
+    let startWeekDayIndex = this.startWeekDayIndex;
     return {
       curDate: startDate,
       curLength: 1,
@@ -116,8 +115,8 @@ export class Calendar {
             this.curDate,
             this.curLength,
             getDayOfTheWeek(this.curDate),
-            getDayAxisIndex(this.curDate, swdi),
-            getMaxWeekAxisIndex(startDate, this.curDate, swdi)
+            getDayAxisIndex(this.curDate, startWeekDayIndex),
+            getMaxWeekAxisIndex(startDate, this.curDate, startWeekDayIndex),
           ),
           done: false,
         };

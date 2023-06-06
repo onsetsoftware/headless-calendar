@@ -5,19 +5,27 @@ export class PlainDate {
   readonly month: number;
   readonly date: number;
 
-  constructor(dateStr: string = PlainDate.today().toString()) {
+  constructor(
+    dateStr: string = PlainDate.today().toString(),
+    protected locale?: Intl.LocalesArgument,
+  ) {
     const [year, month, date] = dateStr.split("-").map((s) => Number(s));
     this.year = year;
     this.month = month;
     this.date = date;
   }
 
-  static create(year: number, month: number, day: number): PlainDate {
-    return new PlainDate([year, month, day].join("-"));
+  static create(
+    year: number,
+    month: number,
+    day: number,
+    locale?: Intl.LocalesArgument,
+  ): PlainDate {
+    return new PlainDate([year, month, day].join("-"), locale);
   }
 
   get monthName() {
-    return monthNames[this.month - 1];
+    return monthNames(this.locale)[this.month - 1];
   }
 
   toJSDate() {
@@ -28,7 +36,7 @@ export class PlainDate {
     return Boolean(
       this.year == another.year &&
         this.month == another.month &&
-        this.date == another.date
+        this.date == another.date,
     );
   }
 
@@ -56,13 +64,13 @@ export class PlainDate {
 
   addDays(days: number): PlainDate {
     return PlainDate.fromJSDate(
-      new Date(this.toJSDate().getTime() + 1000 * 60 * 60 * 24 * days)
+      new Date(this.toJSDate().getTime() + 1000 * 60 * 60 * 24 * days),
     );
   }
 
   subDays(days: number): PlainDate {
     return PlainDate.fromJSDate(
-      new Date(this.toJSDate().getTime() - 1000 * 60 * 60 * 24 * days)
+      new Date(this.toJSDate().getTime() - 1000 * 60 * 60 * 24 * days),
     );
   }
 
@@ -74,18 +82,23 @@ export class PlainDate {
     ].join("-");
   }
 
-  static fromJSDate(date: Date, UTC = true): PlainDate {
+  static fromJSDate(
+    date: Date,
+    UTC = true,
+    locale?: Intl.LocalesArgument,
+  ): PlainDate {
     return new PlainDate(
       UTC
         ? `${date.getUTCFullYear()}-${
             date.getUTCMonth() + 1
           }-${date.getUTCDate()}`
-        : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+        : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+      locale,
     );
   }
 
-  static today(UTC: boolean = true): PlainDate {
+  static today(UTC: boolean = true, locale?: Intl.LocalesArgument): PlainDate {
     const date = new Date();
-    return PlainDate.fromJSDate(date, UTC);
+    return PlainDate.fromJSDate(date, UTC, locale);
   }
 }
