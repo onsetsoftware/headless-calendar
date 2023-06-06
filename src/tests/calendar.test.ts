@@ -1,7 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { CalendarOfMonth } from "../CalendarOfMonth";
 import { Calendar } from "../Calendar";
-import { getWeekDayNames } from "../utils";
 
 describe("Calendar Tests", () => {
   test("calendars must be in date order", () => {
