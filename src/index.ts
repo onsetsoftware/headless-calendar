@@ -1,5 +1,6 @@
 export { Calendar } from "./Calendar";
 export { CalendarOfMonth } from "./CalendarOfMonth";
 export { CalendarOfYear } from "./CalendarOfYear";
-export { PlainDate } from "./PlainDate";
+export { Day } from "./Day";
 export type { DayOfTheWeek } from "./Day";
+export { createDate, PlainDate } from "./PlainDate";

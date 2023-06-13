@@ -1,5 +1,12 @@
 import { monthNames } from "./utils";
 
+export function createDate(
+  dateStr: string = PlainDate.today().toString(),
+  locale?: Intl.LocalesArgument,
+) {
+  return new PlainDate(dateStr, locale);
+}
+
 export class PlainDate {
   readonly year: number;
   readonly month: number;
