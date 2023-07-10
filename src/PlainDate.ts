@@ -14,7 +14,7 @@ export class PlainDate {
   readonly date: number;
 
   constructor(
-    dateStr: string = PlainDate.today().toString(),
+    dateStr: DateString = PlainDate.today().toString() as DateString,
     protected locale?: Intl.LocalesArgument,
   ) {
     const [year, month, date] = dateStr.split("-").map((s) => Number(s));
@@ -29,7 +29,7 @@ export class PlainDate {
     day: number,
     locale?: Intl.LocalesArgument,
   ): PlainDate {
-    return new PlainDate([year, month, day].join("-"), locale);
+    return new PlainDate([year, month, day].join("-") as DateString, locale);
   }
 
   get monthName() {
@@ -96,11 +96,13 @@ export class PlainDate {
     locale?: Intl.LocalesArgument,
   ): PlainDate {
     return new PlainDate(
-      UTC
+      (UTC
         ? `${date.getUTCFullYear()}-${
             date.getUTCMonth() + 1
           }-${date.getUTCDate()}`
-        : `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+        : `${date.getFullYear()}-${
+            date.getMonth() + 1
+          }-${date.getDate()}`) as DateString,
       locale,
     );
   }
