@@ -88,7 +88,7 @@ export function rotateArray<T>(arr: T[], n: number): T[] {
 }
 
 export function getWeekDayNames(
-  startWeekDayIndex: number,
+  startWeekDayIndex: DayOfTheWeek,
   locale?: Intl.LocalesArgument,
 ) {
   return rotateArray(dayNames(locale), startWeekDayIndex);

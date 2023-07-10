@@ -5,4 +5,4 @@ export { Day } from "./Day";
 export type { DayOfTheWeek } from "./Day";
 export { createDate, PlainDate } from "./PlainDate";
 
-export type { DateString, Month } from "./types/date-string";
+export type { DateString, Month, DayOfMonth } from "./types/date-string";

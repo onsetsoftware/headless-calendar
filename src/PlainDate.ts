@@ -1,4 +1,4 @@
-import { DateString } from "./types/date-string";
+import { DateString, DayOfMonth, Month } from "./types/date-string";
 import { monthNames } from "./utils";
 
 export function createDate(
@@ -10,8 +10,8 @@ export function createDate(
 
 export class PlainDate {
   readonly year: number;
-  readonly month: number;
-  readonly date: number;
+  readonly month: Month;
+  readonly date: DayOfMonth<Month>;
 
   constructor(
     dateStr: DateString = PlainDate.today().toString() as DateString,
@@ -19,14 +19,14 @@ export class PlainDate {
   ) {
     const [year, month, date] = dateStr.split("-").map((s) => Number(s));
     this.year = year;
-    this.month = month;
-    this.date = date;
+    this.month = month as Month;
+    this.date = date as DayOfMonth<Month>;
   }
 
-  static create(
+  static create<M extends Month>(
     year: number,
-    month: number,
-    day: number,
+    month: M,
+    day: DayOfMonth<M>,
     locale?: Intl.LocalesArgument,
   ): PlainDate {
     return new PlainDate([year, month, day].join("-") as DateString, locale);

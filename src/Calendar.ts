@@ -84,7 +84,7 @@ export class Calendar {
           result += ` ${monthNames(this.locale)[d.month - 1]} ${d.year}`;
         if (y > 0 && x == 6 && d.date <= 7) {
           result += ` ${monthNames(this.locale)[d.month - 1]}`;
-          if (d.month == 0) result += ` ${d.year}`;
+          if ((d.month as number) === 0) result += ` ${d.year}`;
         }
       }
 

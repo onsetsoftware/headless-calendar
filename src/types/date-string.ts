@@ -1,5 +1,45 @@
 export type Month = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
+type OneTo29 =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20
+  | 21
+  | 22
+  | 23
+  | 24
+  | 25
+  | 26
+  | 27
+  | 28
+  | 29;
+
+type OneTo30 = OneTo29 | 30;
+type OneTo31 = OneTo30 | 31;
+
+export type DayOfMonth<M extends Month> = M extends 2
+  ? OneTo29
+  : M extends 4 | 6 | 9 | 11
+  ? OneTo30
+  : OneTo31;
+
 export type MM =
   | "1"
   | "2"
