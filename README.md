@@ -182,7 +182,7 @@ An iterable object with the same interface of a `Calendar` instance, representin
 
 Syntax:
 ```
-new PlainDate(dateString, locale?: Intl.LocalesArgument)
+new PlainDate(dateString: DateString, locale?: Intl.LocalesArgument)
 ```
 ### Parameters
 * `dateString`(String) *Optional*: It should follow the format `year-month-date` format. Each part is expressed with digits. If it is omitted, it is treated as current date according to local time.
@@ -309,7 +309,7 @@ somePlainDate.subDays(days);
 The `PlainDate` `days` before the active date.
 
 #### `toString`
-A string representation of the `PlainDate`.
+A string representation of the `PlainDate` as a `DateString`.
 
 Syntax:
 ```
