@@ -1,5 +1,6 @@
 import { Day, DayOfTheWeek } from "./Day";
 import { PlainDate } from "./PlainDate";
+import { DateString } from "./types/date-string";
 import {
   getWeekDayNames,
   getDayAxisIndex,
@@ -14,8 +15,8 @@ export class Calendar {
   public readonly startWeekDayIndex: DayOfTheWeek;
 
   constructor(
-    startDateStr: string,
-    endDateStr: string,
+    startDateStr: DateString,
+    endDateStr: DateString,
     startWeekDayIndex: DayOfTheWeek = 0,
     protected locale?: Intl.LocalesArgument,
   ) {

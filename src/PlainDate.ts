@@ -1,7 +1,8 @@
+import { DateString } from "./types/date-string";
 import { monthNames } from "./utils";
 
 export function createDate(
-  dateStr: string = PlainDate.today().toString(),
+  dateStr: DateString = PlainDate.today().toString(),
   locale?: Intl.LocalesArgument,
 ) {
   return new PlainDate(dateStr, locale);
@@ -81,12 +82,12 @@ export class PlainDate {
     );
   }
 
-  toString(): string {
+  toString() {
     return [
       this.year,
       String(this.month).padStart(2, "0"),
       String(this.date).padStart(2, "0"),
-    ].join("-");
+    ].join("-") as DateString;
   }
 
   static fromJSDate(

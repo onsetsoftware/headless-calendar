@@ -1,18 +1,19 @@
 import { Calendar } from "./Calendar";
 import { DayOfTheWeek } from "./Day";
+import { DateString, Month } from "./types/date-string";
 import { monthNames } from "./utils";
 
 export class CalendarOfMonth extends Calendar {
   constructor(
     year: number,
-    month: number,
+    month: Month,
     startWeekDayIndex: DayOfTheWeek = 0,
     protected locale?: Intl.LocalesArgument,
   ) {
-    let startDateStr = `${year}-${month}-1`;
-    let endDateStr = `${year}-${month}-${new Date(
+    const startDateStr = `${year}-${month}-1` as const;
+    const endDateStr = `${year}-${month}-${new Date(
       Date.UTC(year, month, 0),
-    ).getUTCDate()}`;
+    ).getUTCDate()}` as DateString;
 
     super(startDateStr, endDateStr, startWeekDayIndex, locale);
   }

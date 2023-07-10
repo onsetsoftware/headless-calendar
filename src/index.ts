@@ -4,3 +4,5 @@ export { CalendarOfYear } from "./CalendarOfYear";
 export { Day } from "./Day";
 export type { DayOfTheWeek } from "./Day";
 export { createDate, PlainDate } from "./PlainDate";
+
+export type { DateString, Month } from "./types/date-string";
