@@ -11,13 +11,13 @@ export default defineConfig({
     lib: {
       entry: resolvePath("src/index.ts"),
       name: "HeadlessCalendar",
-      fileName: (format) => `headless-calendar.${format}.js`,
+      fileName: `headless-calendar`,
     },
   },
   plugins: [
     dts({
       entryRoot: resolvePath("src"),
-      outputDir: resolvePath("dist/types"),
+      outDir: resolvePath("dist/types"),
     }),
   ],
 });

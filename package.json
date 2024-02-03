@@ -1,6 +1,6 @@
 {
   "name": "@onsetsoftware/headless-calendar",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,12 +17,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/headless-calendar.umd.js",
-  "module": "./dist/headless-calendar.es.js",
+  "main": "./dist/headless-calendar.umd.cjs",
+  "module": "./dist/headless-calendar.js",
   "exports": {
     ".": {
-      "import": "./dist/headless-calendar.es.js",
-      "require": "./dist/headless-calendar.umd.js",
+      "import": "./dist/headless-calendar.js",
+      "require": "./dist/headless-calendar.umd.cjs",
       "types": "./dist/types/index.d.ts"
     }
   },
